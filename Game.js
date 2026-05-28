@@ -52,31 +52,39 @@ selfCollisions(head,queue,bodySn,loop){
 
 let rslt=bodySn.some((n,i) =>{ 
 
-    console.log(
+  /*  console.log(
         i,"le x",
         n.x, "le y",
-        n.y,
+        n.y,"hd x",
         head.x,
         head.y,
          n.x === head.x && n.y === head.y
         
-    );
+    );*/
 
 
 
 
-return i !== bodySn.length-1 && n.x === bodySn[bodySn.length-1].x&& n.y === bodySn[bodySn.length-1].y
+return i !== 0 && n.x === bodySn[0].x&& n.y === bodySn[0].y
+    
+    
+   /* console.log("where? : ",i,"elemen x: ",n.x,"hd tab x: ",bodySn[bodySn.length-1].x,"elemen y: ",n.y,"hd tab y: ",bodySn[bodySn.length-1].y);
+    console.log("tab Complet :",bodySn)*/
+    
+
 
 
 
 
 
 });
- console.log(rslt);
+ console.log("rslt",rslt);
   
 // if true there is a body snake equal to head and game over
 if(rslt){
-// this.gameIsOver(loop);
+    console.log(bodySn);
+
+this.gameIsOver(loop);
 
 
 }
@@ -85,7 +93,33 @@ if(rslt){
   if(head.x === queue.x && head.y === queue.y){
     
 
- clearInterval(loop);
+  this.gameIsOver(loop);
+    
+    
+    
+    
+
+
+  
+
+    
+
+
+
+  
+
+
+
+
+
+
+
+}
+}
+
+    gameIsOver(loop){
+
+   clearInterval(loop);
     this.btnReplay.innerText="GAME-OVER do you want to replay?"
 
     let btn=document.createElement("button");
@@ -101,36 +135,6 @@ if(rslt){
         
     })
 
-
-
-
-// this.gameIsOver(loop);
-    
-    
-    
-    
-}
-
-  
-
-    
-
-
-
-  
-
-
-
-
-
-
-
-}
-
-
-    gameIsOver(){
-
-   
 
 
     }

@@ -20,7 +20,7 @@ this.snakePosX=0;
 this.snakePosY=0;
 
 
-this.snakeBody=[{x:20,y:40} ,{x:40,y:40},{x:60,y:40}];
+this.snakeBody=[{x:60,y:40} ,{x:40,y:40},{x:20,y:40}];
 //this.snakeHead={x:0,y:0};
 
 
@@ -139,32 +139,7 @@ if(grow){
 }
 
 
-//console.log("gr" ,grow);
 
-/*if(grow&&this.deplacement.headRight){
- 
- this.queueSizeH+=20;
- this.queueSizeV=0;
-}else if(grow&&this.deplacement.headDown){
- 
- this.queueSizeH=0;
- this.queueSizeV+=20;
- this.snakeSizeV=this.snakeSizeH;
- 
- 
-}*/
-
-//if(eatPoints%5 ===0){
-// this.snakeWidth+=this.snakeWidth;
-//}
-
-//return this.snakeWidth;
-// horizontal pousse à l arriere 
-
-//vertical donc quand appuis vers le bas ou haut pousse
-
-// definir la tete par exemple de couleur rouge ou la queue de maniere rouge transparente 
-// quand elle pousse moins opaque
 
 }
 
@@ -177,7 +152,6 @@ if(grow){
 
 
 }
-
 
 
 

@@ -5,7 +5,7 @@ export class Deplacement{
   constructor(){
     
     this.dx=20;
-    this.dy=20;
+    this.dy=0;
     this.posX=0;
     this.posY=0;
     
@@ -59,71 +59,52 @@ export class Deplacement{
   
   toMove(snakebody,snakeGrow){
     
-   const snakeHead={x:snakebody[0].x ,y:snakebody[0].y} 
+    let head=snakebody[0];
+    this.direction="right";
     
+    const newHead={x:head.x+this.dx,y:head.y+this.dy}
+
     
-    
-   snakeHead.x=this.posX;
-   snakeHead.y=this.posY;
-   //console.log(this.posX)
-  
-   
-   if(this.direction==="right"){
-    this.headRight=true;
-    
-   this.posX+=this.dx;
-  
-   }else{
-    this.headRight=false;
-   }
-    
-    
-    if(this.posX>380){
-      this.posX=0;
-      
-    }else if(this.posX<0){
-      this.posX=380;
-    }
 
 
 // down direction
 
 
-if(this.keyDownIsPushed){
-if(this.posY<380){
-this.headDown=true;
+/*if(this.keyDownIsPushed){
+//if(this.posY<380){
+//this.headDown=true;
 this.dx=0;
 this.dy=20;
-this.posY+=this.dy;
+//this.posY+=this.dy;
+
+
+//}else{
+
+// this.posY=0;
+  
+  
+//}
 
 
 }else{
-
- this.posY=0;
-  
-  
-}
-
-
-}else{
-    this.headDown=false;
+ //  this.headDown=false;
 }
 
 if(this.keyUpIsPushed){
   
   
-  if(this.posY>=0){
-    this.headUp=true;
+  //if(this.posY>=0){
+  //  this.headUp=true;
   this.dx=0;
   this.dy=-20;
-  this.posY+=this.dy;
-}else{
+//  this.posY+=this.dy;
+//}else{
 
 
-  this.posY=400;
-}
+  //this.posY=400;
+//}
 }else{
-    this.headUp=false;
+   //this.headUp=false;
   
 }
 
@@ -139,29 +120,46 @@ if(this.keyRightIsPushed){
 //this.posX++;
 
 }else{
-
+//this.headRight=false;
 }
 
 
 
 if(this.keyLeftIsPushed){
 
-  this.headLeft=true;
+  //this.headLeft=true;
 this.dy=0;
 this.dx=-20;
   //this.dx=-this.dx;
-  this.posX+=this.dx;
+ // this.posX+=this.dx;
 
 
 
 
 }else{
- this.headLeft=false;
-}
+// this.headLeft=false;
+}*/
+
+
+
+
+
+//wrap snake
+
+newHead.x>380?newHead.x=0:null;
+newHead.x<0?newHead.x=380:null;
+newHead.y<0?newHead.y=380:null;
+newHead.y>380?newHead.y=0:null;
+
+this.posX=newHead.x;
+this.posY=newHead.y;
+
+
+
 
 //  })
 
-snakebody.unshift(snakeHead);
+snakebody.unshift(newHead);
 
 if(snakeGrow === false){
  snakebody.pop();
@@ -179,10 +177,11 @@ mobileControl(){
 
 this.btnDown.addEventListener("touchstart",()=>{
   
-  this.toPush("on","down","up");
-  
-  
-  
+//  this.toPush("on","down","up");
+  if(this.dy!==-20){
+  this.dx=0;
+  this.dy=20;
+  }
   
   
 });
@@ -190,21 +189,29 @@ this.btnDown.addEventListener("touchstart",()=>{
 
 this.btnDown.addEventListener("touchend",()=>{
   
-  this.toPush("off","down");
+ // this.toPush("off","down");
   
 });
 
 
 this.btnLeft.addEventListener("touchstart", () => {
   
-  this.toPush("on","left","right");
+//  this.toPush("on","left","right");
+
+if(this.dx!==20){
+  this.dx=-20;
+  this.dy=0;
+}
+  
+  
+  
   
 });
 
 
 this.btnLeft.addEventListener("touchend", () => {
   
-  this.toPush("off","left");
+ // this.toPush("off","left");
   
 });
 
@@ -213,14 +220,19 @@ this.btnLeft.addEventListener("touchend", () => {
 
 this.btnRight.addEventListener("touchstart", () => {
   
-  this.toPush("on","right","left");
+  //this.toPush("on","right","left");
+  if(this.dx!==-20){
+  this.dx=20;
+  this.dy=0;
+  }
+  
   
 });
 
 
 this.btnRight.addEventListener("touchend", () => {
   
-  this.toPush("off","right");
+  //this.toPush("off","right");
   
 });
 
@@ -228,14 +240,19 @@ this.btnRight.addEventListener("touchend", () => {
 
 this.btnUp.addEventListener("touchstart", () => {
   
-  this.toPush("on","up","down");
+  //this.toPush("on","up","down");
+  if(this.dy!==20){
+  this.dx=0;
+  this.dy=-20;
+  }
+  
   
 });
 
 
 this.btnUp.addEventListener("touchend", () => {
   
-  this.toPush("off","up");
+  //this.toPush("off","up");
   
 });
 
@@ -253,10 +270,10 @@ this.btnUp.addEventListener("touchend", () => {
 }
 
 
-toPush(togle,bName,nonAutoriser){
+/*toPush(togle,bName,nonAutoriser){
  // console.log(bName);
   
-  if(bName == "down" && bName!=="up"&&nonAutoriser!==this.direction){
+  if(bName === "down"&&this.dy!==-20){
   
   switch(togle){
     
@@ -264,8 +281,8 @@ toPush(togle,bName,nonAutoriser){
     
     
     case "on":this.keyDownIsPushed=true;
-  this.direction=bName;
-  this.keyLeftIsPushed=false;
+//  this.direction=bName;
+//  this.keyLeftIsPushed=false;
   
   
   
@@ -283,16 +300,16 @@ toPush(togle,bName,nonAutoriser){
   }
     
     
-  }else if(bName == "left"&&nonAutoriser!==this.direction ){
+  }else if(bName === "left"&&this.dx!==20 ){
     
     switch (togle) {
   
   
   case "on":
     this.keyLeftIsPushed=true;
-    this.keyDownIsPushed=false;
-    this.keyUpIsPushed=false;
-    this.direction=bName;
+   // this.keyDownIsPushed=false;
+    //this.keyUpIsPushed=false;
+  //  this.direction=bName;
    
     
     break;
@@ -307,7 +324,7 @@ toPush(togle,bName,nonAutoriser){
   }
   
   
-  } else if(bName == "right"&& nonAutoriser!==this.direction){
+  } else if(bName === "right"&&this.dx!==-20){
     
     switch (togle) {
   
@@ -315,9 +332,9 @@ toPush(togle,bName,nonAutoriser){
   case "on":
     
     this.keyRightIsPushed=true;
-    this.direction=bName;
-    this.keyDownIsPushed=false;
-    this.keyUpIsPushed=false;
+   // this.direction=bName;
+   // this.keyDownIsPushed=false;
+   // this.keyUpIsPushed=false;
   
     
     
@@ -328,17 +345,17 @@ toPush(togle,bName,nonAutoriser){
     break;
     }
     
-  }else if(bName=="up" &&nonAutoriser!==this.direction){
+  }else if(bName==="up" &&this.dy!==20){
     
     switch (togle) {
   
   
   case "on":
    this.keyUpIsPushed=true;
-   this.direction=bName;
-   this.keyLeftIsPushed=false;
+  // this.direction=bName;
+   //this.keyLeftIsPushed=false;
    
-   
+   o
   
     
     break;
@@ -355,7 +372,7 @@ toPush(togle,bName,nonAutoriser){
     
   
   
-}
+}*/
 
 
 
@@ -403,7 +420,7 @@ this.direction="down";
 this.keyDownIsPushed=true;
  // this.direction=bName;
   this.keyLeftIsPushed=false;
-  this.headRight=false;
+//  this.headRight=false;
 }
 
   break;
@@ -433,7 +450,7 @@ if(nonAutoriser!==this.direction){
   this.keyUpIsPushed=true;
 
    this.keyLeftIsPushed=false;
-   this.headRight=false;
+  // this.headRight=false;
    
 
 
