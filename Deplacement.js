@@ -381,7 +381,7 @@ this.btnUp.addEventListener("touchend", () => {
   // controle pc 
   pcControlEvent(){
 
-  document.addEventListener("keydown", (e,nonAutoriser) => {
+  window.addEventListener("keydown", (e,nonAutoriser) => {
 
     e.key == "ArrowDown"?nonAutoriser='up':e.key=="ArrowLeft"?nonAutoriser='right':e.key=="ArrowRight"?nonAutoriser="left":e.key=="ArrowUp"?nonAutoriser="down":"";
 
@@ -391,7 +391,7 @@ this.toPushdown(e,nonAutoriser);
 
 
 
-document.addEventListener('keyup', (e) => {
+window.addEventListener('keyup', (e) => {
 
 this.toPushUp(e);
 
