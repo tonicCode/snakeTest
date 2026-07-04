@@ -189,7 +189,7 @@ this.btnDown.addEventListener("click",()=>{
 
 // this.btnDown.addEventListener("touchend",()=>{
   
-//  // this.toPush("off","down");
+// this.toPush("off","down");
   
 // });
 
@@ -211,7 +211,7 @@ if(this.dx!==20){
 
 // this.btnLeft.addEventListener("touchend", () => {
   
-//  // this.toPush("off","left");
+// this.toPush("off","left");
   
 // });
 
@@ -232,7 +232,7 @@ this.btnRight.addEventListener("click", () => {
 
 // this.btnRight.addEventListener("touchend", () => {
   
-//   //this.toPush("off","right");
+//this.toPush("off","right");
   
 // });
 
@@ -252,7 +252,7 @@ this.btnUp.addEventListener("click", () => {
 
 // this.btnUp.addEventListener("touchend", () => {
   
-//   //this.toPush("off","up");
+// this.toPush("off","up");
   
 // });
 
@@ -355,7 +355,7 @@ this.btnUp.addEventListener("click", () => {
   // this.direction=bName;
    //this.keyLeftIsPushed=false;
    
-   o
+   
   
     
     break;
