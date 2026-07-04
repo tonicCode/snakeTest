@@ -175,7 +175,7 @@ if(snakeGrow === false){
 //controle mobile 
 mobileControl(){
 
-this.btnDown.addEventListener("touchstart",()=>{
+this.btnDown.addEventListener("click",()=>{
   
 //  this.toPush("on","down","up");
   if(this.dy!==-20){
@@ -187,14 +187,14 @@ this.btnDown.addEventListener("touchstart",()=>{
 });
 
 
-this.btnDown.addEventListener("touchend",()=>{
+// this.btnDown.addEventListener("touchend",()=>{
   
- // this.toPush("off","down");
+//  // this.toPush("off","down");
   
-});
+// });
 
 
-this.btnLeft.addEventListener("touchstart", () => {
+this.btnLeft.addEventListener("click", () => {
   
 //  this.toPush("on","left","right");
 
@@ -209,16 +209,16 @@ if(this.dx!==20){
 });
 
 
-this.btnLeft.addEventListener("touchend", () => {
+// this.btnLeft.addEventListener("touchend", () => {
   
- // this.toPush("off","left");
+//  // this.toPush("off","left");
   
-});
+// });
 
 
 
 
-this.btnRight.addEventListener("touchstart", () => {
+this.btnRight.addEventListener("click", () => {
   
   //this.toPush("on","right","left");
   if(this.dx!==-20){
@@ -230,15 +230,15 @@ this.btnRight.addEventListener("touchstart", () => {
 });
 
 
-this.btnRight.addEventListener("touchend", () => {
+// this.btnRight.addEventListener("touchend", () => {
   
-  //this.toPush("off","right");
+//   //this.toPush("off","right");
   
-});
+// });
 
 
 
-this.btnUp.addEventListener("touchstart", () => {
+this.btnUp.addEventListener("click", () => {
   
   //this.toPush("on","up","down");
   if(this.dy!==20){
@@ -250,11 +250,11 @@ this.btnUp.addEventListener("touchstart", () => {
 });
 
 
-this.btnUp.addEventListener("touchend", () => {
+// this.btnUp.addEventListener("touchend", () => {
   
-  //this.toPush("off","up");
+//   //this.toPush("off","up");
   
-});
+// });
 
 
 
